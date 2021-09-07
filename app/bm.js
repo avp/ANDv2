@@ -1,11 +1,11 @@
-import document from "document"; 
+import document from "document";
 import { user } from "user-profile";
 
 //BM - START
 export let bmrZoneEl = document.getElementById("bmr-zone");
 export let bmiZoneEl = document.getElementById("bmi-zone");
 //BM - END
-  
+
 //BM Draw - START
 export function drawBMR() {
   bmrZoneEl.text = `BMR: ${user.bmr}`;

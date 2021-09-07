@@ -1,4 +1,4 @@
-import document from "document"; 
+import document from "document";
 import { battery } from "power";
 
 //Battery - START
@@ -35,7 +35,7 @@ export function drawBat() {
      batteryLine.style.fill = "crimson";
      batteryLine.width = lineWidth;
   }
-  
+
 }
 
 //Battery Draw - END

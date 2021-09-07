@@ -17,6 +17,6 @@ export function start(){
 }
 
 export function setBaromVis(visibility) {
- baromZone.style.display = (!visibility ? "none" : "inline"); 
- baromIcon.style.display = (!visibility ? "none" : "inline"); 
+ baromZone.style.display = (!visibility ? "none" : "inline");
+ baromIcon.style.display = (!visibility ? "none" : "inline");
 }

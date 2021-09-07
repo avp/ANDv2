@@ -20,9 +20,9 @@ settings.loadSettings();
 display.onchange = state.applyState;
 barometer.start();
 device.deviceSetup();
-clock.ontick = (evt) => {  
+clock.ontick = (evt) => {
   time.drawTime(evt.date);
   date.drawDate(evt.date, settings.language);
   activity.drawAllProgress();
-  battery.drawBat();  
+  battery.drawBat();
 }
