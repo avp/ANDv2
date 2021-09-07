@@ -8,32 +8,32 @@ import * as activity from "./activity.js"
 import * as barometer from "./barometer.js"
 
 export function applyState() {
-  if (display.on) {    
+  if (display.on) {
     applyHRState();
     applyProgressState();
     applyBmState();
     barometer.barom.start();
   } else {
     applyStopState();
-  }  
+  }
 }
 
 export  function applyStopState() {
     hr.hrm.stop();
-    hr.hideHr();  
+    hr.hideHr();
     barometer.barom.stop();
-    clearInterval(activity.fastProgressInterval); 
+    clearInterval(activity.fastProgressInterval);
 }
 export function applyHRState() {
      hr.hrm.start();
-    if (activity.isFastProgress) {      
+    if (activity.isFastProgress) {
       activity.initFastProgressInterval()
     } else {
       clearInterval(activity.fastProgressInterval);
     }
 
     if (!hr.hrmRate) {
-      hr.hideHr()    
+      hr.hideHr()
     } else if(!hr.isHeartbeatAnimation) {
       hr.stopHrAnimation();
     }
@@ -41,10 +41,9 @@ export function applyHRState() {
 
 export function applyProgressState() {
     activity.drawAllProgress();
-    
 }
 
 export function applyBmState() {
-  bm.drawBMR;
-  bm.drawBMI;
+  bm.drawBMR();
+  bm.drawBMI();
 }

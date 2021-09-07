@@ -1,3 +1,4 @@
+
 import document from "document";
 import * as util from "../common/utils";
 import { preferences } from "user-settings";

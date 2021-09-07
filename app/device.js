@@ -11,11 +11,11 @@ export function deviceSetup() {
     var ionicAmPm = document.getElementById('ionic-am-pm');
     ionicAmPm.style.display = 'none';
     versaAmPm.style.display = 'inlne';
-    versaTime.style.fontSize = 124;
-    versaTime.x = screenWidth-15;
-    versaTime.y = 175;
+    versaTime.style.fontSize = 100;
+    versaTime.x = screenWidth-60;
+    versaTime.y = 200;
     var versaSec = document.getElementById('second');
-    versaSec.y = 235;
+    versaSec.y = 200;
   }
   else {
     var versaAmPm = document.getElementById('versa-am-pm');
@@ -23,6 +23,6 @@ export function deviceSetup() {
     ionicAmPm.style.display = 'inline';
     versaAmPm.style.display = 'none';
     var ionicSec = document.getElementById('second');
-    ionicSec.style.fontSize = 40;
+    ionicSec.style.fontSize = 25;
   }
 }

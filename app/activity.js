@@ -23,8 +23,8 @@ export let goalTypes = [
   "steps",
   "distance",
   "elevationGain",
-  "calories",
-  "activeMinutes"
+/* "calories",
+  "activeMinutes" */
 ];
 
 export let progressEls = [];

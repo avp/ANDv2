@@ -17,7 +17,6 @@ import * as activity from "./activity.js"
 import * as state from "./state.js"
 import * as barom from "./barometer.js"
 
-
 // SETTINGS
 export const SETTINGS_TYPE = "cbor";
 export const SETTINGS_FILE = "settingsV1.cbor";
@@ -30,63 +29,63 @@ export function applySettings() {
   if (! loadSettings) {
    return;
   }
-  
+
   try {
     activity.distanceUnitSet((settings.hasOwnProperty("distanceUnit") && settings.distanceUnit.values) ? settings.distanceUnit.values[0].value : "m");
 
     language = (settings.hasOwnProperty("language") && settings.language.values) ? settings.language.values[0].value : "en";
-    
+
     if (settings.hasOwnProperty("timeColor") && settings.timeColor) {
       time.timeEl.style.fill = settings.timeColor;
     }
-    
+
     if (settings.hasOwnProperty("isAmPm")) {
-      time.setIsAmPm(!!settings.isAmPm); 
-    } 
-    
+      time.setIsAmPm(!!settings.isAmPm);
+    }
+
     if (settings.hasOwnProperty("hearRateZoneVis")) {
-       hr.setHrZoneVis(!!settings.hearRateZoneVis); 
-    } 
-    
+       hr.setHrZoneVis(!!settings.hearRateZoneVis);
+    }
+
     if (settings.hasOwnProperty("BMIVis")) {
-       bm.setBMIVis(!!settings.BMIVis); 
-    } 
-    
+       bm.setBMIVis(!!settings.BMIVis);
+    }
+
     if (settings.hasOwnProperty("BMRVis")) {
-      bm.setBMRVis(!!settings.BMRVis); 
-    } 
-    
+      bm.setBMRVis(!!settings.BMRVis);
+    }
+
     if (settings.hasOwnProperty("BaromVis")) {
-      barom.setBaromVis(!!settings.BaromVis); 
-    } 
+      barom.setBaromVis(!!settings.BaromVis);
+    }
 
     if (settings.hasOwnProperty("dateColor") && settings.dateColor) {
       date.dateEl.style.fill = settings.dateColor;
     }
 
     if (settings.hasOwnProperty("isFastProgress")) {
-      activity.isFastProgressSet(!!settings.isFastProgress);    
+      activity.isFastProgressSet(!!settings.isFastProgress);
     }
 
     if (settings.hasOwnProperty("isHeartbeatAnimation")) {
-      hr.isHeartbeatAnimationSet(!!settings.isHeartbeatAnimation); 
-    }       
-          
+      hr.isHeartbeatAnimationSet(!!settings.isHeartbeatAnimation);
+    }
+
 
     if (settings.hasOwnProperty("otherLabelsColor") && settings["otherLabelsColor"]) {
        var otherLabelsColor = settings["otherLabelsColor"];
-       root.style.fill = otherLabelsColor;      
+       root.style.fill = otherLabelsColor;
     }
 
     if (settings.hasOwnProperty("backgroundColor") && settings["backgroundColor"]) {
        var backgroundColor = settings["backgroundColor"];
-       backgroundEl.style.fill = backgroundColor;     
+       backgroundEl.style.fill = backgroundColor;
     }
 
     if (settings.hasOwnProperty("heartColor") && settings["heartColor"]) {
        var heartColor = settings["heartColor"];
        hr.hrIconDiastoleEl.style.fill = heartColor;
-       hr.hrIconSystoleEl.style.fill = heartColor;         
+       hr.hrIconSystoleEl.style.fill = heartColor;
     }
 
     for (var i=0; i < activity.goalTypes.length; i++) {
@@ -132,11 +131,11 @@ export function loadSettings() {
       isHeartbeatAnimation: true,
       isFastProgress: false,
       language: 'en'
-    };    
-    
+    };
+
     if (units.distance === "us") {
-      defaults["distanceUnit"] = { values:[{value:"mi"}]}; 
-    }   
+      defaults["distanceUnit"] = { values:[{value:"mi"}]};
+    }
     return defaults;
   }
 }
