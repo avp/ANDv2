@@ -1,6 +1,7 @@
 import document from "document";
 import { goals } from "user-activity";
 import { today } from "user-activity";
+import * as hrstep from "./hrstep";
 
 //Progress - START
 export var distanceUnit = "m";
@@ -21,6 +22,7 @@ export function getProgressEl(prefix) {
 
 export let goalTypes = [
   "steps",
+  "hrSteps",
   "distance",
   "elevationGain",
 /* "calories",
@@ -41,7 +43,9 @@ export function drawProgress(progressEl) {
   let prefix = progressEl.prefix;
 
   let actual = (today.local[prefix] || 0);
-  if (progressEl.prevProgressVal == actual) {
+  if (prefix === "hrSteps") {
+    displayValue = hrstep.getStepsThisHour();
+  } else if (progressEl.prevProgressVal === actual) {
     return;
   }
   progressEl.prevProgressVal = actual;

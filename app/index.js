@@ -17,23 +17,22 @@ import * as barometer from "./barometer.js"
 
 import { today } from "user-activity";
 
-var stepLastHr = 0;
-updateStepHr();
+// var stepLastHr = 0;
+// updateStepHr();
 
-function updateStepHr() {
-  let stepsValue = today.adjusted.steps;
-  stepLastHr = stepsValue;
-  timerStepHr();
-}
+// function updateStepHr() {
+//   let stepsValue = today.adjusted.steps;
+//   stepLastHr = stepsValue;
+//   timerStepHr();
+// }
 
-function timerStepHr() {
-  let tday = new Date();
-  let mins = tday.getMinutes();
-  let secs = tday.getSeconds();
-  let secondsToNextHour = ((60 - mins) * 60) - secs;
-  setTimeout(updateStepHr, secondsToNextHour * 1000);
-}
-
+// function timerStepHr() {
+//   let tday = new Date();
+//   let mins = tday.getMinutes();
+//   let secs = tday.getSeconds();
+//   let secondsToNextHour = ((60 - mins) * 60) - secs;
+//   setTimeout(updateStepHr, secondsToNextHour * 1000);
+// }
 
 clock.granularity = "seconds";
 settings.loadSettings();
@@ -44,7 +43,6 @@ clock.ontick = (evt) => {
   time.drawTime(evt.date);
   date.drawDate(evt.date, settings.language);
   activity.drawAllProgress();
-  // console.log(stepLastHr);
-  // hrstep.drawHrStep(stepLastHr);
+  hrstep.updateStepsThisHour(evt.date);
   battery.drawBat();
 }

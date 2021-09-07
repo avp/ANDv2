@@ -1,4 +1,4 @@
-import document from "document"; 
+import document from "document";
 import { display } from "display";
 import { HeartRateSensor } from "heart-rate";
 import { user } from "user-profile";
@@ -43,47 +43,47 @@ export function stopHrAnimation() {
 
 export function hideHr() {
    hrmRate = null;
-   prevHrmRate = null;   
+   prevHrmRate = null;
    stopHrAnimation();
    hrEl.style.display = "none";
 }
 
-export function animateHr() {   
+export function animateHr() {
     if (hrmAnimationPhase) {
       hrIconDiastoleEl.style.display = "none";
     } else {
-      hrIconDiastoleEl.style.display = "inline";  
+      hrIconDiastoleEl.style.display = "inline";
     }
-  
+
     hrmAnimationPhase =!hrmAnimationPhase;
-  
+
     if (prevHrmRate != hrmRate) {
       clearInterval(hrAnimatedInterval);
       if (isHeartbeatAnimation) {
         prevHrmRate = hrmRate;
         initHrInterval();
       }
-    }     
+    }
     prevHrmRate = hrmRate;
 }
 
-export function drawHrm() { 
+export function drawHrm() {
   hrmRate = hrm.heartRate;
   if (hrmRate && display.on) {
-    hrCountEl.text = `${hrmRate}`;  
+    hrCountEl.text = `${hrmRate}`;
     hrRestingEl.text = `(${user.restingHeartRate})`;
     var hr_zone = user.heartRateZone(hrmRate);
     if (hr_zone === "out-of-range") { hr_zone = "regular"}
     hrZoneEl.text = hr_zone.toUpperCase();//hr_zone.charAt(0).toUpperCase() + hr_zone.slice(1);
-    
+
     if (!prevHrmRate) {
-      hrEl.style.display = "inline";    
+      hrEl.style.display = "inline";
     }
     if (!hrAnimated && isHeartbeatAnimation) {
-      clearInterval(hrAnimatedInterval);   
+      clearInterval(hrAnimatedInterval);
       prevHrmRate = hrmRate;
       initHrInterval();
-      hrAnimated = true;      
+      hrAnimated = true;
     }
   } else {
     hideHr();
