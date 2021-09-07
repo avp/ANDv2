@@ -42,10 +42,14 @@ for (var i=0; i < goalTypes.length; i++) {
 export function drawProgress(progressEl) {
   let prefix = progressEl.prefix;
 
-  let actual = (today.local[prefix] || 0);
+  let actual;
   if (prefix === "hrSteps") {
-    displayValue = hrstep.getStepsThisHour();
-  } else if (progressEl.prevProgressVal === actual) {
+    actual = hrstep.getStepsThisHour();
+  } else {
+    actual = (today.local[prefix] || 0);
+  }
+
+  if (progressEl.prevProgressVal === actual) {
     return;
   }
   progressEl.prevProgressVal = actual;

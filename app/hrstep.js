@@ -2,7 +2,7 @@ import document from "document";
 import { today } from "user-activity";
 
 let stepsThisHour = 0;
-let stepsOffset = total.adjusted.steps;
+let stepsOffset = today.adjusted.steps;
 
 export function getStepsThisHour() {
   return stepsThisHour;
