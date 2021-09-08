@@ -1,6 +1,7 @@
 import document from "document";
 import { display } from "display";
 import clock from "clock";
+import { me as appbit } from "appbit";
 
 import * as device from "./device.js"
 // import * as bm from "./bm.js";
@@ -39,10 +40,17 @@ settings.loadSettings();
 display.onchange = state.applyState;
 barometer.start();
 device.deviceSetup();
+
+hrstep.updateStepsOffset();
+
 clock.ontick = (evt) => {
   time.drawTime(evt.date);
   date.drawDate(evt.date, settings.language);
   activity.drawAllProgress();
-  hrstep.updateStepsThisHour(evt.date);
   battery.drawBat();
 }
+
+/// Save state when the app is unloaded.
+appbit.addEventListener('unload', (event) => {
+  hrstep.saveOffsetToFile();
+});
